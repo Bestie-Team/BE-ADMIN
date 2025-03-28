@@ -17,6 +17,19 @@ async function bootstrap() {
       },
     }),
   );
+  app.use(
+    session({
+      secret: process.env.SESSION_SECRET,
+      resave: false,
+      saveUninitialized: false,
+      rolling: true,
+      cookie: {
+        maxAge: 1000 * 60 * 5,
+        secure: process.env.NODE_ENV === 'production' ? true : false,
+        httpOnly: true,
+      },
+    }),
+  );
 
   const config = new DocumentBuilder()
     .setTitle('Lighty Admin')
