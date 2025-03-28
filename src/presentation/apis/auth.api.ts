@@ -11,9 +11,7 @@ export class AuthApi {
 
   @Post('login')
   async login(@Body() dto: LoginRequest, @Session() session: any) {
-    const user = await this.authService.login(dto, session);
-    console.log(session);
-    return user;
+    await this.authService.login(dto, session);
   }
 
   @Post('register')

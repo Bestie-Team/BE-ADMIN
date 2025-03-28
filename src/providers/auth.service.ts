@@ -38,8 +38,7 @@ export class AuthService {
     // 세션에 사용자 정보 저장
     session.userId = user.id;
     session.username = user.username;
-
-    return user;
+    return;
   }
 
   async validUser(id: string) {
