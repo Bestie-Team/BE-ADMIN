@@ -269,6 +269,12 @@ model BlockedUser {
   @@map("blocked_user")
 }
 
+model admin {
+  id       String @id @db.Uuid
+  username String
+  password String
+}
+
 view ActiveUser {
   email                        String        @unique @db.VarChar(255)
   provider                     OAuthProvider
