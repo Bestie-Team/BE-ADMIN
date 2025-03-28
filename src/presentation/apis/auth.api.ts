@@ -14,8 +14,8 @@ export class AuthApi {
     await this.authService.login(dto, session);
   }
 
-  @Post('register')
-  async register(@Body() dto: RegisterRequest) {
-    await this.authService.register(dto);
-  }
+  // @Post('register')
+  // async register(@Body() dto: RegisterRequest) {
+  //   await this.authService.register(dto);
+  // }
 }
