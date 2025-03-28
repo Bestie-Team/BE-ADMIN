@@ -23,6 +23,7 @@ async function bootstrap() {
       resave: false,
       saveUninitialized: false,
       rolling: true,
+      proxy: true,
       cookie: {
         maxAge: 1000 * 60 * 5,
         secure: process.env.NODE_ENV === 'production' ? true : false,
