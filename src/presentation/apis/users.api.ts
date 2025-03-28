@@ -1,11 +1,13 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Controller, Get, Query, Session, UseGuards } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { converters } from 'src/presentation/converters/user.converters';
 import { UserListRequest } from 'src/presentation/dto/users/request/user-list.request';
 import { UserListResponse } from 'src/presentation/dto/users/response/user-list.response';
 import { UsersReader } from 'src/providers/users.reader';
+import { AuthGuard } from 'src/supporters/guard/auth.guard';
 
 @ApiTags('/users')
+@UseGuards(AuthGuard)
 @Controller('users')
 export class UsersApi {
   constructor(private readonly usersReader: UsersReader) {}
@@ -17,7 +19,11 @@ export class UsersApi {
     type: UserListResponse,
   })
   @Get()
-  async getAll(@Query() dto: UserListRequest): Promise<UserListResponse[]> {
+  async getAll(
+    @Query() dto: UserListRequest,
+    @Session() session: any,
+  ): Promise<UserListResponse[]> {
+    console.log(session);
     const users = await this.usersReader.readAll(dto);
     return converters.toListDto(users);
   }

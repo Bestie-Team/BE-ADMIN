@@ -6,21 +6,8 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors({ origin: true });
   app.setGlobalPrefix('admin');
-  app.use(
-    session({
-      secret: process.env.SESSION_SECRET,
-      resave: false,
-      saveUninitialized: false,
-      rolling: true,
-      cookie: {
-        maxAge: 1000 * 60 * 5,
-        secure: true,
-        httpOnly: true,
-      },
-    }),
-  );
-
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
