@@ -271,7 +271,7 @@ model BlockedUser {
 
 model admin {
   id       String @id @db.Uuid
-  username String
+  username String @unique
   password String
 }
 
