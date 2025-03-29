@@ -27,4 +27,8 @@ export class UsersReader {
       },
     });
   }
+
+  async getCount() {
+    return await this.prisma.user.count();
+  }
 }

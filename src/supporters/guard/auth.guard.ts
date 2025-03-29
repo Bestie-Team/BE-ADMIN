@@ -8,7 +8,6 @@ export class AuthGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const req = context.switchToHttp().getRequest();
     const session = req.session;
-    console.log(session);
     const userId = session?.userId;
 
     if (!userId) return false;
