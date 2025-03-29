@@ -22,7 +22,7 @@ export class UserListRequest {
 
   @ApiProperty({ example: 15 })
   @IsInt()
-  @Max(20)
+  @Max(50)
   @Type(() => Number)
   readonly limit: number;
 
