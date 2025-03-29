@@ -20,7 +20,7 @@ export class UsersReader {
         createdAt: true,
         deletedAt: true,
       },
-      skip: page * limit,
+      skip: (page - 1) * limit,
       take: limit,
       orderBy: {
         [sortBy]: sortOrder,

@@ -41,6 +41,10 @@ export class AuthService {
     return;
   }
 
+  async logout(session: Record<string, any>) {
+    session.destroy();
+  }
+
   async validUser(id: string) {
     const user = await this.prisma.admin.findUnique({
       where: {

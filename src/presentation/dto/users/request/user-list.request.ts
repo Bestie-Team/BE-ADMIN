@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
-import { IsEnum, IsInt } from 'class-validator';
+import { IsEnum, IsInt, Max, Min } from 'class-validator';
 
 export enum SortBy {
   NAME = 'name',
@@ -16,11 +16,13 @@ export enum SortOrder {
 export class UserListRequest {
   @ApiProperty({ example: 1 })
   @IsInt()
+  @Min(1)
   @Type(() => Number)
   readonly page: number;
 
   @ApiProperty({ example: 15 })
   @IsInt()
+  @Max(20)
   @Type(() => Number)
   readonly limit: number;
 
